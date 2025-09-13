@@ -62,7 +62,7 @@ This project is built for:
 
 # 🛠️ Tech Stack
 
-- Frontend:** HTML, CSS, JavaScript  
+- Frontend: HTML, CSS, JavaScript  
 
 ---
 
@@ -84,6 +84,7 @@ We plan to keep building! Upcoming features may include:
 - Tools for classrooms and educators  
 - Advanced strategies (e.g., spreads, covered calls)  
 - Social features: friend challenges & tournaments
+- Integrating artificial intelligence creating dynamic story telling
 
 ---
 
