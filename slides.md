@@ -60,9 +60,15 @@ This project is built for:
 
 ---
 
-# 🛠️ Tech Stack
+# 📏 Design
 
-- Frontend: HTML, CSS, JavaScript  
+## Software
+- Frontend: HTML, CSS, JavaScript
+
+## Accessibility
+- Responsive web design across all browsers
+- High contrast ui
+- Large text
 
 ---
 
