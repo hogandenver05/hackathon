@@ -90,4 +90,4 @@ We plan to keep building! Upcoming features may include:
 
 # Sources
 
-ET CONTRIBUTORS. (2024, May 30). *Why young traders are losing money in options.* The Economic Times; Economic Times. https://economictimes.indiatimes.com/markets/options/why-young-traders-are-losing-money-in-options/articleshow/110554297.cms?from=mdr
+ET CONTRIBUTORS. (2024, May 30). [*Why young traders are losing money in options.* The Economic Times.](https://economictimes.indiatimes.com/markets/options/why-young-traders-are-losing-money-in-options/articleshow/110554297.cms?from=mdr)
