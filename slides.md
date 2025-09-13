@@ -35,11 +35,11 @@ Many new traders jump into markets without fully understanding the risks, especi
 - Make options trading **approachable**
 - Teach finance in a fun, interactive way
 - Help users build confidence before investing real money
+- Generate youth interest for investing
 
 ---
 
 # 👥 Target Audience
-
 
 - Students and early professionals  
 - Beginners curious about investing  
@@ -70,16 +70,17 @@ Many new traders jump into markets without fully understanding the risks, especi
 By using this simulator, users will learn:
 
 - Planning for long-term investments  
-- Evaluating market conditions  
-- Risk management and position sizing  
 - Benefits of early investing habits
+- Evaluating market conditions  
+- Compound interest
+- Managing risk
 
 ---
 
 # 🚧 Post-Hackathon Plans
 
-- Tools for classrooms and educators  
 - Integrating artificial intelligence creating dynamic story telling
+- Tools for classrooms and educators
 - Hyperpersonalization
 
 ---
