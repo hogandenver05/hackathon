@@ -2,7 +2,7 @@
 marp: true
 theme: default
 paginate: true
-backgroundColor: #ccccff 
+backgroundColor: #ffffff 
 style: |
   section {
     font-size: 1.2rem;
@@ -81,7 +81,6 @@ By using this simulator, users will learn:
 
 We plan to keep building! Upcoming features may include:
 
-- Mobile-friendly version  
 - Tools for classrooms and educators  
 - Advanced strategies (e.g., spreads, covered calls)  
 - Social features: friend challenges & tournaments
