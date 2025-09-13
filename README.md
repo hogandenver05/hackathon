@@ -44,22 +44,18 @@ This project is built for:
 
 ## 🔧 Key Features
 
-- 📈 Simulated stock & options trading (calls and puts)  
-- 🎓 Built-in tutorials and explainer pop-ups  
-- 📉 Interactive profit/loss visualizations  
+- 📈 Simulated stocks  
+- 🎓 Explainer pop-ups  
+- 📉 Interactive profit/loss visualizations
 - 💼 Mock portfolio tracking and history  
-- 🎮 Gamified experience with achievements and progress tracking  
+- 🎮 Gamified experience 
 - 🌐 Uses **mock or live market data** (depending on mode)  
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React.js + TailwindCSS  
-- **Backend**: Node.js + Express  
-- **Database**: MongoDB / Firebase (for user sessions and portfolios)  
-- **Options Engine**: Custom simulation logic using a simplified Black-Scholes model  
-- **APIs**: Mocked or live stock data via Alpha Vantage / Yahoo Finance  
+- **Frontend**: HTML, CSS, JS
 
 ---
 
@@ -67,10 +63,10 @@ This project is built for:
 
 By using the simulator, users can learn:
 
-- ✅ How options work: calls vs. puts, expiration, strike price, premium  
-- 📊 How to evaluate market conditions and place trades  
+- ✅ How to plan for the future
+- 📊 How to evaluate market conditions
 - ⚠️ Risk management strategies (e.g. limiting losses, understanding leverage)  
-- 🧩 How to build and manage a diversified portfolio  
+- 🧩 Benifits of early investing
 
 ---
 
@@ -81,14 +77,13 @@ Following Hackathon 2025, we’re exploring:
 - 📱 A mobile-friendly version  
 - 🧑‍🏫 Classroom tools for educators  
 - 🔄 Advanced trading features (covered calls, spreads, etc.)  
-- 🧠 AI-powered coaching or hints  
 - 🧑‍🤝‍🧑 Social features like friend challenges or tournaments  
 
 ---
 
 ✅ Getting Started (For Developers)
 # Clone the repo
-git clone https://github.com/your-org/trading-simulator.git
+git clone https://github.com/hogandenver05/hackathon
 cd trading-simulator
 
 # Install dependencies
