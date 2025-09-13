@@ -2,7 +2,7 @@
 marp: true
 theme: default
 paginate: true
-backgroundColor: #ffffff
+backgroundColor: #ffffff 
 style: |
   section {
     font-size: 1.2rem;
@@ -20,11 +20,11 @@ Welcome to our Stock & Options Trading Simulator — a web-based platform design
 
 This simulator is a gamified learning tool where users can:
 
-- 🛒 Simulate buying/selling stocks and options  
-- 📘 Learn about calls, puts, strike prices, and expirations  
-- 📊 Track a mock portfolio over time
-- 🔍 Explore “what-if” trading scenarios  
-- 🏆 Earn achievements through financial literacy challenges  
+- Simulate buying/selling stocks and options  
+- Learn about calls, puts, strike prices, and expirations  
+- Track a mock portfolio over time
+- Explore “what-if” trading scenarios  
+- Earn achievements through financial literacy challenges  
 
 ---
 
@@ -44,24 +44,25 @@ Many new traders jump into markets without fully understanding the risks — esp
 
 This project is built for:
 
-- 🌱 Young learners (ages 15–25)  
-- 🎓 Students and early professionals  
-- 💡 Beginners curious about investing  
-- 🛡️ Risk-averse individuals who want to practice
+- Young learners (ages 15–25)
+  - "nearly 85% of young traders incurred losses within their first year of trading options." Why young traders are losing money in options, by Economic Times, Rahul Ghose
+- Students and early professionals  
+- Beginners curious about investing  
+- Risk-averse individuals who want to practice
 
 ---
 
 # 🔧 Key Features
 
-- 📈 Simulated stocks 
-- 🎓 Explainer pop-ups for terms and strategies
-- 🎮 Gamified learning  
+- Simulated stocks 
+- Explainer pop-ups for terms and strategies
+- Gamified learning  
 
 ---
 
 # 🛠️ Tech Stack
 
-- **Frontend:** HTML, CSS, JavaScript  
+- Frontend:** HTML, CSS, JavaScript  
 
 ---
 
@@ -69,10 +70,10 @@ This project is built for:
 
 By using this simulator, users will learn:
 
-- ✅ Planning for long-term investments  
-- 📊 Evaluating market conditions  
-- ⚠️ Risk management and position sizing  
-- 🧩 Benefits of early investing habits
+- Planning for long-term investments  
+- Evaluating market conditions  
+- Risk management and position sizing  
+- Benefits of early investing habits
 
 ---
 
@@ -80,7 +81,12 @@ By using this simulator, users will learn:
 
 We plan to keep building! Upcoming features may include:
 
-- 📱 Mobile-friendly version  
-- 🧑‍🏫 Tools for classrooms and educators  
-- 🔄 Advanced strategies (e.g., spreads, covered calls)  
-- 🧑‍🤝‍🧑 Social features: friend challenges & tournaments
+- Tools for classrooms and educators  
+- Advanced strategies (e.g., spreads, covered calls)  
+- Social features: friend challenges & tournaments
+
+---
+
+# Sources
+
+ET CONTRIBUTORS. (2024, May 30). *Why young traders are losing money in options.* The Economic Times; Economic Times. https://economictimes.indiatimes.com/markets/options/why-young-traders-are-losing-money-in-options/articleshow/110554297.cms?from=mdr
