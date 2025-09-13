@@ -6,10 +6,10 @@ body {
     /* Kept the same for visual style, but contrast is handled on inner elements. */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     max-width: 900px;
-    margin: 0 auto;
+    margin: 5em auto;
     padding: 20px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
+    min-height: 95vh;
     /* Use a high-contrast dark color for text to ensure readability on bright backgrounds. */
     color: #333;
 }
