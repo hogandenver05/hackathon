@@ -21,16 +21,14 @@ Welcome to our Stock & Options Trading Simulator — a web-based platform design
 This simulator is a gamified learning tool where users can:
 
 - Simulate buying/selling stocks and options  
-- Learn about calls, puts, strike prices, and expirations  
 - Track a mock portfolio over time
 - Explore “what-if” trading scenarios  
-- Earn achievements through financial literacy challenges  
 
 ---
 
 # 🎯 Purpose
 
-Many new traders jump into markets without fully understanding the risks — especially with options.
+Many new traders jump into markets without fully understanding the risks, especially with options.
 
 **Our mission:**
 
@@ -42,13 +40,12 @@ Many new traders jump into markets without fully understanding the risks — esp
 
 # 👥 Target Audience
 
-This project is built for:
 
-- Young learners (ages 15–25)
-  - "nearly 85% of young traders incurred losses within their first year of trading options." Why young traders are losing money in options, by Economic Times, Rahul Ghose
 - Students and early professionals  
 - Beginners curious about investing  
 - Risk-averse individuals who want to practice
+- Young learners (ages 15–25)
+  - "Nearly 85% of young traders incurred losses within their first year of trading options." [Why young traders are losing money in options, by Economic Times, Rahul Ghose]()
 
 ---
 
@@ -56,19 +53,15 @@ This project is built for:
 
 - Simulated stocks 
 - Explainer pop-ups for terms and strategies
-- Gamified learning  
+- Gamified learning
 
 ---
 
 # 📏 Design
 
-## Software
 - Frontend: HTML, CSS, JavaScript
-
-## Accessibility
-- Responsive web design across all browsers
-- High contrast ui
-- Large text
+- Responsive web design across all screens
+- High contrast UI & Large text
 
 ---
 
@@ -85,12 +78,9 @@ By using this simulator, users will learn:
 
 # 🚧 Post-Hackathon Plans
 
-We plan to keep building! Upcoming features may include:
-
 - Tools for classrooms and educators  
-- Advanced strategies (e.g., spreads, covered calls)  
-- Social features: friend challenges & tournaments
 - Integrating artificial intelligence creating dynamic story telling
+- Hyperpersonalization
 
 ---
 
