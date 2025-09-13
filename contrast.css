@@ -1,0 +1,229 @@
+/* Accessible CSS
+* Improved contrast, focus states, and readability.
+*/
+
+body {
+    /* Kept the same for visual style, but contrast is handled on inner elements. */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    /* Use a high-contrast dark color for text to ensure readability on bright backgrounds. */
+    color: #333;
+}
+
+.container {
+    /* Use a solid, high-contrast background for inner content. */
+    background: #ffffff; 
+    border-radius: 20px;
+    padding: 30px;
+    /* Use a more subtle shadow. */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); 
+    /* Set a dark color for text within the container. */
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    /* Increase font size for better visibility. */
+    font-size: 3em; 
+    text-shadow: none; /* Text shadows can reduce readability. */
+    /* Ensure the h1 text has high contrast with the background. */
+    color: #2c3e50; 
+}
+
+.scenario-display {
+    /* Use a solid, light background to ensure text is readable. */
+    background: #f7f7f7; 
+    border-radius: 15px;
+    padding: 25px;
+    margin: 20px 0;
+    min-height: 250px;
+    /* Use a solid, high-contrast border. */
+    border: 2px solid #ccc;
+    color: #333; /* Ensure text within is dark. */
+}
+
+.age {
+    /* Use a color with better contrast. */
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #e67e22; 
+    margin-bottom: 15px;
+}
+
+.situation {
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    /* Increase line height for better readability. */
+    line-height: 1.8;
+}
+
+.choices-container {
+    margin: 20px 0;
+}
+
+.choice-button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 15px 20px;
+    font-size: 1.3em;
+    /* Use solid colors with high contrast. */
+    background: #f1f1f1; 
+    color: #333;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    /* Add a visible focus outline for keyboard navigation. */
+    outline: none; 
+}
+
+/* Use both :hover and :focus for a consistent and visible state change. */
+.choice-button:hover,
+.choice-button:focus {
+    background: #e0e0e0;
+    border-color: #3498db;
+    transform: translateX(5px);
+    /* A clear focus outline is crucial for accessibility. */
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
+
+.choice-button.selected {
+    background: #f9e79f; /* A light, visible yellow. */
+    border-color: #f1c40f; /* A darker, high-contrast yellow. */
+    box-shadow: 0 0 10px rgba(241, 196, 15, 0.5);
+    outline: 3px solid #f1c40f; /* Stronger outline for the selected state. */
+    outline-offset: 2px;
+}
+
+.lesson {
+    font-style: italic;
+    /* Use a solid, readable background. */
+    background: #fff8e1;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    /* Use a solid, high-contrast color for the border. */
+    border-left: 4px solid #f39c12; 
+    color: #333;
+    display: none;
+}
+
+.lesson.show {
+    display: block;
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.next-button {
+    display: block;
+    margin: 30px auto;
+    padding: 15px 40px;
+    font-size: 1.4em;
+    /* Use a high-contrast background and text color. */
+    background: #27ae60;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    /* Add a clear focus outline. */
+    outline: none; 
+}
+
+.next-button:focus {
+    outline: 3px solid #2ecc71;
+    outline-offset: 2px;
+}
+
+.next-button.enabled {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.next-button.enabled:hover,
+.next-button.enabled:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    background: #2ecc71;
+}
+
+.progress {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.3em;
+    color: #333;
+}
+
+.wealth-tracker {
+    background: #ecf0f1;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 20px 0;
+    text-align: center;
+    color: #333;
+    font-size: 1.2em;
+}
+
+.evaluation {
+    background: #ecf0f1;
+    border-radius: 15px;
+    padding: 25px;
+    margin-top: 20px;
+    color: #333;
+}
+
+.score {
+    font-size: 2.2em;
+    color: #e67e22; 
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.learning-path {
+    margin-top: 20px;
+}
+
+.learning-item {
+    background: #f7f7f7;
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 3px solid #f39c12;
+    color: #333;
+}
+
+.restart-button {
+    display: block;
+    margin: 20px auto;
+    padding: 12px 30px;
+    background: #bdc3c7;
+    color: #333;
+    border: 2px solid #7f8c8d;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.3em;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.restart-button:hover,
+.restart-button:focus {
+    background: #95a5a6;
+    outline: 2px solid #7f8c8d;
+    outline-offset: 2px;
+}
