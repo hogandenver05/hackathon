@@ -1,4 +1,4 @@
-# 📈 Stock & Options Trading Simulator  
+# 💸 Money Makers
 ### 🚀 Built for Hackathon 2025  
 
 Welcome to our **Stock & Options Trading Simulator**, a web-based project designed to make learning about the markets both **educational and engaging** — especially for younger, first-time investors.  
@@ -46,16 +46,17 @@ This project is built for:
 
 - 📈 Simulated stocks  
 - 🎓 Explainer pop-ups  
-- 📉 Interactive profit/loss visualizations
-- 💼 Mock portfolio tracking and history  
+- 📉 Profit/loss visualizations
+- 💼 Mock portfolio tracking and history 
 - 🎮 Gamified experience 
-- 🌐 Uses **mock or live market data** (depending on mode)  
 
 ---
 
-## 🛠️ Tech Stack
+# 📏 Design
 
-- **Frontend**: HTML, CSS, JS
+- Frontend: HTML, CSS, JavaScript
+- Responsive web design across all screens
+- High contrast UI & Large text
 
 ---
 
@@ -65,7 +66,7 @@ By using the simulator, users can learn:
 
 - ✅ How to plan for the future
 - 📊 How to evaluate market conditions
-- ⚠️ Risk management strategies (e.g. limiting losses, understanding leverage)  
+- ⚠️ Risk management strategies (e.g. limiting losses)
 - 🧩 Benifits of early investing
 
 ---
@@ -74,7 +75,6 @@ By using the simulator, users can learn:
 
 Following Hackathon 2025, we’re exploring:
 
-- 📱 A mobile-friendly version  
 - 🧑‍🏫 Classroom tools for educators  
 - 🔄 Advanced trading features (covered calls, spreads, etc.)  
 - 🧑‍🤝‍🧑 Social features like friend challenges or tournaments  
@@ -83,24 +83,10 @@ Following Hackathon 2025, we’re exploring:
 
 ✅ Getting Started (For Developers)
 # Clone the repo
+```
 git clone https://github.com/hogandenver05/hackathon
-cd trading-simulator
-
-# Install dependencies
-npm install
-
-# Run the app locally
-npm run dev
-
-
-Note: Requires Node.js v18+ and a valid API key for stock data (if using live mode).
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License**.  
-Feel free to fork, remix, and build on it — especially for educational purposes.
+cd hackathon
+```
 
 ---
 
