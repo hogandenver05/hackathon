@@ -9,8 +9,8 @@ style: |
   }
 ---
 
-# 📈 Stock & Options Trading Simulator  
-### 🚀 Built for Hackathon 2025
+# 💸 Money Makers
+### 📈 Stock & Options Trading Simulator  
 
 Welcome to our Stock & Options Trading Simulator — a web-based platform designed to make learning about markets engaging and risk-free!
 
