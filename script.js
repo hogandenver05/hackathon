@@ -1,0 +1,456 @@
+// Global variables - DECLARED FIRST
+let investments = [];
+let currentScenario = -1;
+let userChoices = [];
+let totalWealth = 1000;
+let selectedChoice = null;
+
+// Financial scenarios data
+const scenarios = [
+    {
+        age: "Age 20",
+        situation: "A new company is selling shares for $10 each. This is your first investment opportunity!",
+        choices: [
+            {
+                text: "💰 Buy 10 shares at $10 each",
+                value: "invest_early",
+                wealth: -100,
+                investment: { type: "growth_stock", amount: 100, annualReturn: 0.10, yearsHeld: 45, ageStarted: 20 },
+                lesson: "Great choice! You started investing early - this gives your money maximum time to grow through compound returns."
+            },
+            {
+                text: "❌ Skip this stock",
+                value: "skip_early",
+                wealth: 0,
+                investment: null,
+                lesson: "You played it safe, but missed the opportunity to start building wealth early. Time is your greatest asset in investing."
+            }
+        ]
+    },
+    {
+        age: "Age 25", 
+        situation: "You get a raise at your job! You now have an extra $200 per month. What do you do with it?",
+        choices: [
+            {
+                text: "💎 Save the extra money in your investment account",
+                value: "save_raise",
+                wealth: 500,
+                investment: null,
+                lesson: "Excellent! Saving your raise shows financial discipline. This extra money can fund future investments."
+            },
+            {
+                text: "🛍️ Spend the extra money on lifestyle improvements",
+                value: "spend_raise",
+                wealth: 0,
+                investment: null,
+                lesson: "You enjoyed the lifestyle upgrade, but missed the chance to accelerate your wealth building. Lifestyle inflation can hurt long-term wealth."
+            }
+        ]
+    },
+    {
+        age: "Age 30",
+        situation: "A hot startup offers shares for $5 each. It's risky - they could 10x or go to zero. You have cash available from your previous choices.",
+        choices: [
+            {
+                text: "🎯 Buy 20 shares at $5 each (High Risk/High Reward)",
+                value: "invest_startup",
+                wealth: -100,
+                investment: { type: "startup", amount: 100, annualReturn: 0.25, annualVolatility: 0.8, yearsHeld: 35, ageStarted: 30 },
+                lesson: "Bold move! High-risk investments can pay off big, but you're prepared to lose this money. Diversification is key."
+            },
+            {
+                text: "🛡️ Skip this risky investment",
+                value: "skip_startup",
+                wealth: 0,
+                investment: null,
+                lesson: "Sometimes the best investment is the one you don't make. Avoiding excessive risk protects your capital."
+            }
+        ]
+    },
+    {
+        age: "Age 35",
+        situation: "You need a car and have two options: buy with cash or finance it. Cash purchase costs $15,000.",
+        choices: [
+            {
+                text: "💳 Buy the car with cash (avoid debt)",
+                value: "buy_cash",
+                wealth: -300,
+                investment: null,
+                lesson: "Smart choice! You avoided debt and interest payments. Paying cash keeps you debt-free but reduces investment capital."
+            },
+            {
+                text: "⏳ Finance the car and keep cash invested",
+                value: "finance_car",
+                wealth: 0,
+                investment: null,
+                lesson: "You kept your cash working for you in investments. If your returns exceed the loan interest, this can be profitable."
+            }
+        ]
+    },
+    {
+        age: "Age 40",
+        situation: "Your first company's shares have grown significantly over 20 years! Time to decide what to do.",
+        choices: [
+            {
+                text: "💰 Sell all shares and lock in profits",
+                value: "sell_early",
+                wealth: 0,
+                investment: { type: "sell_growth_stock", sellAll: true },
+                lesson: "You locked in substantial gains! Taking profits is never wrong, and you now have cash for new opportunities."
+            },
+            {
+                text: "📈 Hold for potential continued growth",
+                value: "hold_early",
+                wealth: 0,
+                investment: null,
+                lesson: "You're letting your winners run! This could lead to even bigger gains, but also carries the risk of giving back profits."
+            }
+        ]
+    },
+    {
+        age: "Age 45",
+        situation: "A stable utility company offers shares for $50 each. Low risk, steady 6% annual growth expected.",
+        choices: [
+            {
+                text: "🏦 Buy 4 shares at $50 each (Safe investment)",
+                value: "invest_stable",
+                wealth: -200,
+                investment: { type: "stable_stock", amount: 200, annualReturn: 0.06, yearsHeld: 20, ageStarted: 45 },
+                lesson: "Conservative choice! Stable investments provide steady growth and reduce portfolio volatility. Balance is key."
+            },
+            {
+                text: "🎲 Skip and wait for higher-growth opportunities",
+                value: "skip_stable",
+                wealth: 0,
+                investment: null,
+                lesson: "You're waiting for better opportunities. Sometimes patience pays off, but steady gains compound over time too."
+            }
+        ]
+    },
+    {
+        age: "Age 50",
+        situation: "Real estate opportunity! A rental property costs $50,000 down payment but could provide steady income and appreciation.",
+        choices: [
+            {
+                text: "🏠 Buy the rental property",
+                value: "buy_property",
+                wealth: -1000,
+                investment: { type: "real_estate", amount: 1000, annualReturn: 0.054, yearsHeld: 15, ageStarted: 50 },
+                lesson: "Real estate diversifies your portfolio! Property can provide both income and long-term appreciation, though it's less liquid."
+            },
+            {
+                text: "💵 Keep cash liquid for stock opportunities",
+                value: "stay_liquid",
+                wealth: 0,
+                investment: null,
+                lesson: "Staying liquid gives you flexibility for quick opportunities. Liquidity has value, but so does diversification."
+            }
+        ]
+    },
+    {
+        age: "Age 55",
+        situation: "Hot tech stock at $30/share! AI company with huge potential but volatile. Your risk tolerance is being tested.",
+        choices: [
+            {
+                text: "🚀 Buy 5 shares at $30 each (High volatility)",
+                value: "invest_tech",
+                wealth: -150,
+                investment: { type: "tech_stock", amount: 150, annualReturn: 0.15, annualVolatility: 0.4, yearsHeld: 10, ageStarted: 55 },
+                lesson: "You're taking measured risks late in your career! Tech stocks can be volatile but offer growth potential."
+            },
+            {
+                text: "🎯 Focus on safer investments near retirement",
+                value: "play_safe",
+                wealth: 0,
+                investment: null,
+                lesson: "Wise restraint! As you near retirement, preserving capital often becomes more important than chasing growth."
+            }
+        ]
+    },
+    {
+        age: "Age 60",
+        situation: "Your stable company shares have doubled! Pre-retirement decision time - what's your strategy?",
+        choices: [
+            {
+                text: "💸 Sell and secure retirement funds",
+                value: "secure_retirement",
+                wealth: 0,
+                investment: { type: "sell_stable_stock", sellAll: true },
+                lesson: "Security-focused choice! Locking in gains before retirement reduces risk and provides peace of mind."
+            },
+            {
+                text: "📊 Hold for continued growth in retirement",
+                value: "growth_retirement",
+                wealth: 0,
+                investment: null,
+                lesson: "You're staying invested for growth! This could provide better long-term returns but carries market risk."
+            }
+        ]
+    }
+];
+
+// Core calculation functions - DEFINED BEFORE ANY OTHER FUNCTIONS
+function calculateCompoundGrowth(principal, annualRate, years) {
+    if (!principal || !annualRate || years < 0) return 0;
+    return Math.round(principal * Math.pow(1 + annualRate, years));
+}
+
+function calculatePortfolioValue() {
+    if (!investments || investments.length === 0) return 0;
+    
+    let totalValue = 0;
+    const currentAge = 20 + (currentScenario * 5);
+    
+    investments.forEach(investment => {
+        if (!investment || !investment.amount || !investment.ageStarted) return;
+        
+        const yearsHeld = Math.max(0, currentAge - investment.ageStarted);
+        
+        if (investment.type === "startup") {
+            // Simplified: 30% chance of success
+            if (Math.random() < 0.3) {
+                totalValue += calculateCompoundGrowth(investment.amount, investment.annualReturn, yearsHeld);
+            }
+        } else if (investment.type === "tech_stock") {
+            const volatileReturn = investment.annualReturn * (0.8 + Math.random() * 0.4);
+            totalValue += calculateCompoundGrowth(investment.amount, volatileReturn, yearsHeld);
+        } else {
+            totalValue += calculateCompoundGrowth(investment.amount, investment.annualReturn, yearsHeld);
+        }
+    });
+    
+    return Math.round(totalValue);
+}
+
+function formatMoney(amount) {
+    return Math.round(amount || 0).toLocaleString('en-US');
+}
+
+function updateWealthDisplay() {
+    const portfolioValue = calculatePortfolioValue();
+    const netWorth = totalWealth + portfolioValue;
+    document.getElementById('wealthTracker').innerHTML = 
+        `💰 Current Cash: $${formatMoney(totalWealth)} | 📈 Portfolio Value: $${formatMoney(portfolioValue)} | 🏆 Total Net Worth: $${formatMoney(netWorth)}`;
+}
+
+// Main game functions
+function startSimulation() {
+    currentScenario = 0;
+    displayScenario();
+}
+
+function displayScenario() {
+    if (currentScenario >= scenarios.length) {
+        showFinalEvaluation();
+        return;
+    }
+
+    const scenario = scenarios[currentScenario];
+    selectedChoice = null;
+    
+    let html = `
+        <div class="age">${scenario.age}</div>
+        <div class="situation">${scenario.situation}</div>
+        <div class="choices-container">
+    `;
+    
+    scenario.choices.forEach((choice, index) => {
+        html += `<button class="choice-button" onclick="selectChoice(${index})">${choice.text}</button>`;
+    });
+    
+    html += `</div>
+        <div class="lesson" id="lessonDisplay">
+            <strong>💡 Key Lesson:</strong> <span id="lessonText"></span>
+        </div>
+    `;
+    
+    document.getElementById('scenarioDisplay').innerHTML = html;
+    document.getElementById('nextButton').classList.remove('enabled');
+    updateWealthDisplay();
+}
+
+function selectChoice(choiceIndex) {
+    const scenario = scenarios[currentScenario];
+    const choice = scenario.choices[choiceIndex];
+    selectedChoice = choiceIndex;
+    
+    // Update button appearance
+    document.querySelectorAll('.choice-button').forEach(btn => btn.classList.remove('selected'));
+    document.querySelectorAll('.choice-button')[choiceIndex].classList.add('selected');
+    
+    // Update wealth
+    totalWealth += choice.wealth || 0;
+    
+    // Handle investments and selling
+    if (choice.investment) {
+        if (choice.investment.type === "sell_growth_stock") {
+            const growthStockIndex = investments.findIndex(inv => inv && inv.type === "growth_stock");
+            if (growthStockIndex !== -1) {
+                const investment = investments[growthStockIndex];
+                const yearsHeld = 40 - investment.ageStarted;
+                const saleValue = calculateCompoundGrowth(investment.amount, investment.annualReturn, yearsHeld);
+                totalWealth += saleValue;
+                investments.splice(growthStockIndex, 1);
+                choice.lesson = `You sold your growth stock for $${formatMoney(saleValue)}! Your original $${formatMoney(investment.amount)} investment grew ${Math.round((saleValue/investment.amount-1)*100)}% over ${yearsHeld} years through compound interest.`;
+            }
+        } else if (choice.investment.type === "sell_stable_stock") {
+            const stableStockIndex = investments.findIndex(inv => inv && inv.type === "stable_stock");
+            if (stableStockIndex !== -1) {
+                const investment = investments[stableStockIndex];
+                const yearsHeld = 60 - investment.ageStarted;
+                const saleValue = calculateCompoundGrowth(investment.amount, investment.annualReturn, yearsHeld);
+                totalWealth += saleValue;
+                investments.splice(stableStockIndex, 1);
+                choice.lesson = `You sold your stable stock for $${formatMoney(saleValue)}! Your $${formatMoney(investment.amount)} investment grew ${Math.round((saleValue/investment.amount-1)*100)}% over ${yearsHeld} years at ${(investment.annualReturn*100).toFixed(1)}% annual returns.`;
+            }
+        } else {
+            investments.push(choice.investment);
+        }
+    }
+    
+    // Store choice
+    userChoices.push({
+        age: scenario.age,
+        choice: choice.text,
+        value: choice.value,
+        lesson: choice.lesson,
+        wealth: totalWealth,
+        portfolioValue: calculatePortfolioValue()
+    });
+    
+    // Show lesson
+    document.getElementById('lessonText').textContent = choice.lesson;
+    document.getElementById('lessonDisplay').classList.add('show');
+    
+    // Enable next button
+    document.getElementById('nextButton').classList.add('enabled');
+    updateWealthDisplay();
+}
+
+function nextScenario() {
+    if (!document.getElementById('nextButton').classList.contains('enabled')) return;
+    currentScenario++;
+    displayScenario();
+}
+
+function calculateScore() {
+    let score = 0;
+    const choices = userChoices.map(c => c && c.value).filter(Boolean);
+    const finalPortfolioValue = calculatePortfolioValue();
+    const finalNetWorth = totalWealth + finalPortfolioValue;
+    
+    if (choices.includes('invest_early')) score += 25;
+    if (choices.includes('save_raise')) score += 15;
+    if (choices.includes('invest_startup')) score += 10;
+    if (choices.includes('invest_stable') || choices.includes('buy_property')) score += 15;
+    if (choices.includes('sell_early') || choices.includes('secure_retirement')) score += 10;
+    if (choices.includes('buy_cash')) score += 10;
+    if (finalNetWorth > 2000) score += 5;
+    if (finalNetWorth > 5000) score += 10;
+    if (finalNetWorth > 10000) score += 10;
+    
+    return Math.min(100, score);
+}
+
+function showFinalEvaluation() {
+    const finalPortfolioValue = calculatePortfolioValue();
+    const finalNetWorth = totalWealth + finalPortfolioValue;
+    const score = calculateScore();
+    
+    let performance, riskManagement, strategy;
+    if (score >= 80) {
+        performance = "Excellent! You demonstrated strong financial discipline and smart decision-making.";
+        riskManagement = "You balanced risk and reward effectively throughout your journey.";
+        strategy = "Your long-term thinking and consistent approach built substantial wealth.";
+    } else if (score >= 60) {
+        performance = "Good job! You made mostly sound financial decisions with room for improvement.";
+        riskManagement = "You showed reasonable caution while still pursuing growth opportunities.";
+        strategy = "Your approach was generally solid, though some opportunities were missed.";
+    } else {
+        performance = "There's room for improvement. Focus on starting early and staying consistent.";
+        riskManagement = "Consider being more aggressive with early investments when you have time to recover.";
+        strategy = "Remember: time in the market beats timing the market. Start early and stay invested.";
+    }
+    
+    let compoundSummary = '';
+    if (investments.length === 0) {
+        compoundSummary = '<p style="text-align: center; font-style: italic;">You didn\'t make any long-term investments, so you missed out on the power of compound interest!</p>';
+    } else {
+        let totalGrowth = 0;
+        compoundSummary = '<div style="font-size: 0.9em;">';
+        investments.forEach(investment => {
+            if (investment && investment.amount && investment.ageStarted) {
+                const yearsHeld = 65 - investment.ageStarted;
+                const currentValue = calculateCompoundGrowth(investment.amount, investment.annualReturn, yearsHeld);
+                const gain = currentValue - investment.amount;
+                const returnPercentage = Math.round((currentValue / investment.amount - 1) * 100);
+                totalGrowth += gain;
+                
+                const investmentName = investment.type.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+                compoundSummary += `
+                    <div style="margin: 8px 0; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 5px;">
+                        <strong>${investmentName}:</strong> $${formatMoney(investment.amount)} → $${formatMoney(currentValue)} 
+                        <br><span style="color: #FFD700;">+${returnPercentage}% gain over ${yearsHeld} years at ${(investment.annualReturn*100).toFixed(1)}% annual return</span>
+                    </div>
+                `;
+            }
+        });
+        compoundSummary += `
+            <div style="margin-top: 15px; padding: 15px; background: rgba(255,215,0,0.2); border-radius: 8px; text-align: center;">
+                <strong>Total Compound Growth: $${formatMoney(totalGrowth)}</strong>
+                <br><em>This is money your money earned without you working for it!</em>
+            </div>
+        `;
+        compoundSummary += '</div>';
+    }
+    
+    const html = `
+        <div class="age">🎉 Retirement - Age 65</div>
+        <div class="evaluation">
+            <div class="score">Final Score: ${score}/100</div>
+            <div style="font-size: 1.3em; margin-bottom: 20px;">
+                <strong>Final Net Worth: $${formatMoney(finalNetWorth)}</strong>
+            </div>
+            
+            <h3>📊 Your Financial Journey Evaluation</h3>
+            <p><strong>Investment Performance:</strong> ${performance}</p>
+            <p><strong>Risk Management:</strong> ${riskManagement}</p>
+            <p><strong>Overall Strategy:</strong> ${strategy}</p>
+            
+            <div style="margin: 20px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px;">
+                <h3>💰 Compound Interest Magic</h3>
+                ${compoundSummary}
+            </div>
+            
+            <button class="restart-button" onclick="restartSimulation()">
+                🔄 Start New Financial Journey
+            </button>
+        </div>
+    `;
+    
+    document.getElementById('scenarioDisplay').innerHTML = html;
+    document.getElementById('nextButton').style.display = 'none';}
+
+function restartSimulation() {
+    currentScenario = -1;
+    userChoices = [];
+    investments = [];
+    totalWealth = 1000;
+    selectedChoice = null;
+    
+    document.getElementById('scenarioDisplay').innerHTML = `
+        <div class="age">Welcome Back!</div>
+        <div class="situation">Ready for another financial journey? Each playthrough teaches new lessons about wealth building and financial decision-making. See how compound interest can work differently with various investment strategies!</div>
+        <div class="choices-container">
+            <button class="choice-button" onclick="startSimulation()">🚀 Start New Financial Journey</button>
+        </div>
+    `;
+    
+    document.getElementById('nextButton').style.display = 'block';
+    document.getElementById('nextButton').classList.remove('enabled');
+    updateWealthDisplay();
+}
+
+// Initialize when page loads
+document.getElementById('nextButton').addEventListener('click', nextScenario);
+updateWealthDisplay();
